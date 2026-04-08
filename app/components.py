@@ -17,14 +17,14 @@ def render_result(sentiment, percent):
     if sentiment == "Positivo":
         st.markdown(f"""
         <div style="background: linear-gradient(90deg, rgba(16, 185, 129, 0.15), rgba(16, 185, 129, 0.02)); border-left: 6px solid #10b981; padding: 25px; border-radius: 8px; margin-bottom: 30px;">
-            <h2 style="color: #10b981; margin-top: 0; margin-bottom: 8px;">AVALIACAO POSITIVA</h2>
-            <div style="color: #e2e8f0; font-size: 1.15rem;">A IA esta <b>{percent:.1f}%</b> confiante de que esta e uma avaliacao favoravel ao filme.</div>
+            <h2 style="color: #10b981; margin-top: 0; margin-bottom: 8px;">AVALIAÇÃO POSITIVA</h2>
+            <div style="color: #e2e8f0; font-size: 1.15rem;">A IA está <b>{percent:.1f}%</b> confiante de que esta é uma crítica positiva do filme.</div>
         </div>
         """, unsafe_allow_html=True)
     elif sentiment == "Negativo":
         st.markdown(f"""
         <div style="background: linear-gradient(90deg, rgba(239, 68, 68, 0.15), rgba(239, 68, 68, 0.02)); border-left: 6px solid #ef4444; padding: 25px; border-radius: 8px; margin-bottom: 30px;">
-            <h2 style="color: #ef4444; margin-top: 0; margin-bottom: 8px;">AVALIACAO NEGATIVA</h2>
-            <div style="color: #e2e8f0; font-size: 1.15rem;">A IA esta <b>{percent:.1f}%</b> confiante de que esta e uma critica ou avaliacao negativa.</div>
+            <h2 style="color: #ef4444; margin-top: 0; margin-bottom: 8px;">AVALIAÇÃO NEGATIVA</h2>
+            <div style="color: #e2e8f0; font-size: 1.15rem;">A IA está <b>{percent:.1f}%</b> confiante de que esta á uma critica negativa do filme.</div>
         </div>
         """, unsafe_allow_html=True)
