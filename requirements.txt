@@ -1,8 +1,6 @@
 --extra-index-url https://download.pytorch.org/whl/cpu
 
-# Substitui o `torch==2.10.0+cpu` original, uma vez que não existe pypi release torch 2.10.0 (existe 2.1.0 e agora 2.2.0, o 2.1.0 é um bom standard de cpu, caso falhe com torch limpo)
-torch==2.10.0
-streamlit>=1.20.0
-nltk>=3.9.1
-plotly>=5.10.0
-pandas>=1.5.0
+torch==2.10.0+cpu
+nltk==3.9.1
+datasets==4.0.0
+streamlit==1.56.0
