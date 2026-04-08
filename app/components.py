@@ -1,14 +1,17 @@
 import streamlit as st
 import os
 
+
 def load_css():
     css_path = os.path.join(os.path.dirname(__file__), "style.css")
     with open(css_path, "r", encoding="utf-8") as f:
         st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
+
 def render_header():
     st.markdown("<h1>Analisador de Críticas IMDB</h1>", unsafe_allow_html=True)
     st.markdown("<p class='subtitle'>Escreva sua avaliação de filme abaixo e nossa Inteligência Artificial preverá o sentimento associado.</p>", unsafe_allow_html=True)
+
 
 def render_result(sentiment, percent):
     if sentiment == "Positivo":
