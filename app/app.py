@@ -14,27 +14,29 @@ def load_assets():
     base_dir = Path(__file__).parent
     vocab_path = base_dir / "assets" / "vocab.json"
     model_path = base_dir / "assets" / "nbow_model.pt"
-    
+
+    device = torch.device("cpu")
     vocab = load_vocab(vocab_path)
     model = NBoWModel(vocab_size=len(vocab), embedding_dim=64, output_dim=1, pad_idx=vocab["<pad>"])
-    model.load_state_dict(torch.load(model_path, map_location=torch.device('cpu')))
-    return model, vocab
+    model.load_state_dict(torch.load(model_path, map_location=device))
+    
+    return model, vocab, device
 
 try:
-    model, vocab = load_assets()
+    model, vocab, device = load_assets()
 except Exception as e:
     st.error(f"Erro ao carregar o modelo ou vocabulário. Detalhe: {e}")
     st.stop()
 
 render_header()
-user_input = st.text_area(" Digite sua avaliação (em inglês):", placeholder="ex: This movie was absolutely phenomenal...", height=150)
+user_input = st.text_area(" Digite sua avaliação (em inglês):", placeholder="ex: This movie is incredible...", height=150)
 
 if st.button("Analisar Sentimento"):
     if user_input.strip() == "":
         st.warning("Por favor, digite algum texto antes de analisar.")
     else:
         st.write("---")
-        sentiment, probability = predict_sentiment(model, user_input, vocab)
+        sentiment, probability = predict_sentiment(model, user_input, vocab, device)
         
         if sentiment == "Inválido":
             st.warning("Texto Inválido. Não há palavras reconhecidas no vocabulário.")
