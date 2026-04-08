@@ -31,7 +31,7 @@ def predict_sentiment(model, text, vocab, device=torch.device('cpu')):
 
     # Se a frase for inválida ou vazia de palavras do nosso vocab
     if len(indices) == 0:
-        return "Inválido", 0.5, tokens, indices
+        return "Inválido", 0.5
 
     tensor = torch.LongTensor(indices).to(device)
     tensor = tensor.unsqueeze(0)
@@ -42,4 +42,4 @@ def predict_sentiment(model, text, vocab, device=torch.device('cpu')):
 
     sentiment = "Positivo" if prob >= 0.5 else "Negativo"
 
-    return sentiment, prob, tokens, indices
+    return sentiment, prob
